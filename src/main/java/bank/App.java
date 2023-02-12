@@ -22,8 +22,8 @@ public class App
 
         Properties props = new Properties();
         props.setProperty("url", "jdbc:mysql://ap-south.connect.psdb.cloud:3306/projecta");
-        props.setProperty("username", "f1uuwga1ggf8rhv0e63l");
-        props.setProperty("password", "pscale_pw_EN2yW3nE31XpJD53xsT7D2u44DV8cyGWEIc1vILcMmO");
+        props.setProperty("username", args[0]);
+        props.setProperty("password", args[1]);
 
         CreateConnection conn = new CreateConnection(props);
         conn.getConnection();
