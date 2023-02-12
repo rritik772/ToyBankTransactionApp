@@ -10,7 +10,7 @@
 
   <name>project</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>https://www.github.com/shield-zone</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,14 +18,30 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
-  <!-- <dependencies> -->
+  <dependencies>
   <!--   <dependency> -->
   <!--     <groupId>junit</groupId> -->
   <!--     <artifactId>junit</artifactId> -->
   <!--     <version>4.11</version> -->
   <!--     <scope>test</scope> -->
   <!--   </dependency> -->
-  <!-- </dependencies> -->
+    <dependency>
+        <groupId>org.mariadb.jdbc</groupId>
+        <artifactId>mariadb-java-client</artifactId>
+        <version>3.1.2</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.mysql</groupId>
+        <artifactId>mysql-connector-j</artifactId>
+        <version>8.0.32</version>
+    </dependency>
+      <dependency>
+          <groupId>unknown.binary</groupId>
+          <artifactId>AbsoluteLayout</artifactId>
+          <version>SNAPSHOT</version>
+      </dependency>
+  </dependencies>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
@@ -51,6 +67,14 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+                <mainClass>bank.App</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -72,4 +96,11 @@
       </plugins>
     </pluginManagement>
   </build>
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
 </project>
