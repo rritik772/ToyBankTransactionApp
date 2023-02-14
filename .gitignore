@@ -1,5 +1,5 @@
-./.settings/
-./.project/
-./target/
-./lib/
-./run.sh
+.settings/
+.project/
+target/
+lib/
+run.sh
