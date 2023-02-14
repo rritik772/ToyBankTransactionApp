@@ -1,13 +1,8 @@
 package bank;
 
-import java.util.ArrayList;
 import java.util.Properties;
 
-import bank.Enums.TransactionStats;
-import bank.Enums.TransactionType;
 import bank.GUI.TransactionsGUI;
-import bank.Modals.Transaction;
-import bank.database.BankTransaction;
 import bank.database.CreateConnection;
 
 /**
@@ -18,6 +13,9 @@ public class App
 {
     public static void main( String[] args )
     {
+        if (args.length < 2) {
+            throw new IllegalArgumentException("Need 2 arguments, username and password. See Readme and run.sh for username and password");
+        }
         System.out.println( "Program Started" );
 
         Properties props = new Properties();
