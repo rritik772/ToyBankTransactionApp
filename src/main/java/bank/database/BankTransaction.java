@@ -28,6 +28,8 @@ public class BankTransaction {
       stmt.setString(7, transaction.transactionStats.name());
 
       stmt.executeUpdate();
+
+      updateBankTransactionTable(transaction);
       
       if (transaction.transactionStats == TransactionStats.Valid)
           insertIntoValid(transaction);
@@ -195,6 +197,22 @@ public class BankTransaction {
       System.err.println("File: " + element.getFileName() +"Line Number: " + element.getLineNumber());
       System.err.println("Error Code: " + e.getErrorCode());
       System.err.println("Error Message: " + e.getMessage());
+    }
+  }
+
+  private void updateBankTransactionTable(Transaction transaction) {
+    try {
+      PreparedStatement stmt = conn.prepareStatement("UPDATE BankTrans SET NewBal = ?, TransStat = ? WHERE TransID = ?");
+      stmt.setDouble(1, transaction.newBalance);
+      stmt.setString(2, transaction.transactionStats.name());
+      stmt.setString(3, transaction.transactionID);
+
+      stmt.executeUpdate();
+    } catch (SQLException e) {
+      System.err.println("Error Code: " + e.getErrorCode());
+      System.err.println("Error Message: " + e.getMessage());
+      System.out.print("*** Stack trace ***");
+      e.printStackTrace();
     }
   }
 }
